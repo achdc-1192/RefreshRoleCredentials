@@ -3,10 +3,10 @@ import os
 import sys
 import random
 client = boto3.client('sts')
-sessionname = ""
+#the following line is to just give different role session name, just to verify the role is being refreshed
 sessionname = "test"+str(random.randint(1, 100))
 
-creds = client.assume_role(RoleArn='arn:aws:iam::226055112299:role/InstanceAdmin', RoleSessionName=sessionname)
+creds = client.assume_role(RoleArn='arn:aws:iam::1234567890:role/role-name', RoleSessionName=sessionname)
 creds = dict(creds)
 access_key=creds['Credentials']['AccessKeyId']
 secret_key=creds['Credentials']['SecretAccessKey']
